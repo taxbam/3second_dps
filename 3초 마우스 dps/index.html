@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        h1 {
+            text-align: center;
+            color: green;
+            font-size: 100px;
+        }
+
+        div {
+            text-align: center;
+            font-size: 100px;
+        }
+
+        input:active {
+            box-shadow: 0px 0px 25px black;
+        }
+
+        input:onclick {
+            background: green;
+        }
+    </style>
+    <h1>3초 마우스 dps 측정</h1>
+    <hr>
+    <script>
+        let rand = 0;
+        let click_val = 0;
+        let timer = 0;
+        let btn1 = document.getElementById("btn1")
+        let endgame = 0;
+        let clk_num = 0;
+
+        function start() {
+            timer = setTimeout("change()", 3000);
+        }
+
+        function change() {
+            endgame = 1;
+            let text = document.getElementById("title");
+            btn1.style.background = "red";
+            btn1.value = "끝!";
+            let clk = clk_num / 3;
+            text.innerHTML = "초당 " + clk + "번 클릭했습니다.";
+
+        }
+
+        function clk() {
+            if (clk_num == 0) {
+                btn1 = document.getElementById("btn1")
+                btn1.value = "계속 클릭하세요!";
+                start();
+            }
+
+            if (endgame == 0) {
+                clk_num++;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <form style="text-align: center;">
+        <Input onclick="clk()" type="button" id="btn1" value="클릭하면 시작합니다."
+            style="width: 100%; height: 300px; font-size: 50px;">
+        </button>
+    </form>
+    <br>
+    <div id="title">
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>
